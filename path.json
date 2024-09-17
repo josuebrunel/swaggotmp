@@ -1,0 +1,92 @@
+[
+  {
+    "method": "GET",
+    "path": "organization/:org",
+    "name": "org-get"
+  },
+  {
+    "method": "DELETE",
+    "path": "organization/:org",
+    "name": "org-delete"
+  },
+  {
+    "method": "PATCH",
+    "path": "organization/:org/role/:role",
+    "name": "role-update"
+  },
+  {
+    "method": "DELETE",
+    "path": "organization/:org/user/:user",
+    "name": "user-delete"
+  },
+  {
+    "method": "GET",
+    "path": "/user/types",
+    "name": "ekolo/app.App.Run.(*UserHandler).GetUserTypes.func4"
+  },
+  {
+    "method": "GET",
+    "path": "organization",
+    "name": "org-list"
+  },
+  {
+    "method": "GET",
+    "path": "organization/:org/role/:role",
+    "name": "role-get"
+  },
+  {
+    "method": "DELETE",
+    "path": "organization/:org/role/:role",
+    "name": "role-delete"
+  },
+  {
+    "method": "GET",
+    "path": "/",
+    "name": "ekolo/app.App.Run.func2"
+  },
+  {
+    "method": "GET",
+    "path": "/swagger/*",
+    "name": "github.com/swaggo/echo-swagger.EchoWrapHandler.func1"
+  },
+  {
+    "method": "POST",
+    "path": "organization",
+    "name": "org-create"
+  },
+  {
+    "method": "POST",
+    "path": "organization/:org/user",
+    "name": "user-create"
+  },
+  {
+    "method": "GET",
+    "path": "organization/:org/user",
+    "name": "user-list"
+  },
+  {
+    "method": "PATCH",
+    "path": "organization/:org/user/:user",
+    "name": "user-update"
+  },
+  {
+    "method": "PATCH",
+    "path": "organization/:org",
+    "name": "org-update"
+  },
+  {
+    "method": "POST",
+    "path": "organization/:org/role",
+    "name": "role-create"
+  },
+  {
+    "method": "GET",
+    "path": "organization/:org/role",
+    "name": "role-list"
+  },
+  {
+    "method": "GET",
+    "path": "organization/:org/user/:user",
+    "name": "user-get"
+  }
+]

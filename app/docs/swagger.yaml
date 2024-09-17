@@ -1,0 +1,642 @@
+basePath: /
+definitions:
+  service.PayloadTag:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+    required:
+    - name
+    - type
+    type: object
+  service.RequestOrgCreate:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      updated_at:
+        type: string
+      uuid:
+        type: string
+    type: object
+  service.RequestOrgUpdate:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      orgParam:
+        type: string
+      phone:
+        type: string
+      updated_at:
+        type: string
+      uuid:
+        type: string
+    type: object
+  service.RequestUserCreate:
+    properties:
+      address:
+        type: string
+      birth_date:
+        type: string
+      birth_place:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      org:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      type:
+        type: string
+      updated_at:
+        type: string
+      uuid:
+        type: string
+    type: object
+  service.RequestUserUpdate:
+    properties:
+      address:
+        type: string
+      birth_date:
+        type: string
+      birth_place:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      org:
+        type: string
+      orgParam:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      type:
+        type: string
+      updated_at:
+        type: string
+      userParam:
+        type: string
+      uuid:
+        type: string
+    type: object
+  service.Response:
+    properties:
+      data: {}
+      errors:
+        items:
+          type: string
+        type: array
+      status:
+        type: integer
+    type: object
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://demo.com/support
+  description: Ekolo
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: demo.com
+  title: Ekolo Swagger UI
+  version: "1.0"
+paths:
+  /organization:
+    get:
+      description: List organizations
+      operationId: orgs-get
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: List organizations
+      tags:
+      - organization
+    post:
+      consumes:
+      - application/json
+      description: Create an organization
+      operationId: org-create
+      parameters:
+      - description: Organization data
+        in: body
+        name: organization
+        required: true
+        schema:
+          $ref: '#/definitions/service.RequestOrgCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Create an organization
+      tags:
+      - organization
+  /organization/{org}/tag:
+    get:
+      description: List tag tags
+      operationId: tags-get
+      parameters:
+      - description: organization ID
+        format: uuid
+        in: path
+        name: org
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: List tag tags
+      tags:
+      - tag
+    post:
+      consumes:
+      - application/json
+      description: Create an tag
+      operationId: tag-create
+      parameters:
+      - description: Organization ID
+        format: uuid
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: tag data
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/service.PayloadTag'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Create an tag
+      tags:
+      - tag
+  /organization/{org}/tag/{tag}:
+    delete:
+      description: Delete organization tag
+      operationId: tag-delete
+      parameters:
+      - description: organization ID
+        format: uuid
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: tag ID
+        format: uuid
+        in: path
+        name: tag
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Delete organization tag
+      tags:
+      - tag
+    get:
+      description: Get an tag
+      operationId: tag-get
+      parameters:
+      - description: organization ID
+        format: uuid
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: tag ID
+        format: uuid
+        in: path
+        name: tag
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Get an tag
+      tags:
+      - tag
+    patch:
+      consumes:
+      - application/json
+      description: Update an organization tag
+      operationId: tag-update
+      parameters:
+      - description: organization ID
+        format: uuid
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: tag ID
+        format: uuid
+        in: path
+        name: tag
+        required: true
+        type: string
+      - description: tag data
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/service.PayloadTag'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Update an organization tag
+      tags:
+      - tag
+  /organization/{org}/user:
+    get:
+      description: List user users
+      operationId: users-get
+      parameters:
+      - description: organization ID
+        in: path
+        name: org
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: List user users
+      tags:
+      - user
+    post:
+      consumes:
+      - application/json
+      description: Create an user
+      operationId: user-create
+      parameters:
+      - description: Organization ID
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: user data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/service.RequestUserCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Create an user
+      tags:
+      - user
+  /organization/{org}/user/{uuid}:
+    delete:
+      description: Delete organization user
+      operationId: user-delete
+      parameters:
+      - description: organization ID
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: user ID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Delete organization user
+      tags:
+      - user
+    get:
+      description: Get an user
+      operationId: user-get
+      parameters:
+      - description: organization ID
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: user ID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Get an user
+      tags:
+      - user
+    patch:
+      consumes:
+      - application/json
+      description: Update an organization user
+      operationId: user-update
+      parameters:
+      - description: organization ID
+        in: path
+        name: org
+        required: true
+        type: string
+      - description: user ID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      - description: user data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/service.RequestUserUpdate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Update an organization user
+      tags:
+      - user
+  /organization/{uuid}:
+    delete:
+      description: Delete an organization
+      operationId: org-delete
+      parameters:
+      - description: Organization ID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Delete an organization
+      tags:
+      - organization
+    get:
+      description: Get an organization
+      operationId: org-get
+      parameters:
+      - description: Organization ID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Get an organization
+      tags:
+      - organization
+    patch:
+      consumes:
+      - application/json
+      description: Update an organization
+      operationId: org-update
+      parameters:
+      - description: Organization ID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      - description: Organization data
+        in: body
+        name: organization
+        required: true
+        schema:
+          $ref: '#/definitions/service.RequestOrgUpdate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: Update an organization
+      tags:
+      - organization
+  /user/types:
+    get:
+      description: List users' type
+      operationId: user-types
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/service.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/service.Response'
+      summary: List users's type
+      tags:
+      - user
+schemes:
+- http
+- https
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
+swagger: "2.0"
